@@ -1,2 +1,2 @@
-fs-find-dir
+fs-find-root
 ====
