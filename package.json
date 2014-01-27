@@ -1,0 +1,29 @@
+{
+  "name": "fs-find-root",
+  "version": "0.0.0",
+  "description": "search up directories",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jarofghosts/fs-find-root.git"
+  },
+  "keywords": [
+    "search",
+    "file",
+    "fs",
+    "up",
+    "root"
+  ],
+  "author": "jesse keane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarofghosts/fs-find-root/issues"
+  },
+  "homepage": "https://github.com/jarofghosts/fs-find-root"
+}
