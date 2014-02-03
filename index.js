@@ -22,7 +22,7 @@ function find(file_or_dir, to_find, dir, cb) {
   }
 }
 
-find.dir = find_thing.bind(null, 'dir')
-find.file = find_thing.bind(null, 'file')
+find.dir = find.bind(null, 'dir')
+find.file = find.bind(null, 'file')
 
 module.exports = find
