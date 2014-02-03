@@ -1,8 +1,7 @@
 var fs = require('fs'),
-    path = require('path'),
-    find
+    path = require('path')
 
-function find_thing(file_or_dir, to_find, dir, cb) {
+function find(file_or_dir, to_find, dir, cb) {
   var pieces = dir.split(path.sep)
 
   try_stat(pieces)
@@ -23,7 +22,6 @@ function find_thing(file_or_dir, to_find, dir, cb) {
   }
 }
 
-find = find_thing.bind(null, 'dir')
 find.dir = find_thing.bind(null, 'dir')
 find.file = find_thing.bind(null, 'file')
 

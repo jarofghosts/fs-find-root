@@ -9,11 +9,12 @@ search up directories until you find what you're looking for
 
 `var find = require('fs-find-root')`
 
-* `find(name, starting_directory, callback)` searches for directory `name`
-starting from `start_directory` and calls `callback` with the results
-* `find.file(name, starting_directory, callback)` does the same but looking
-for a file instead of a directory
-* `find.dir === find` you can use it either way you prefer
+* `find('dir', name, starting_directory, callback)` searches for directory
+`name` starting from `start_directory` and calls `callback` with the results.
+* `find.dir(name, starting_directory, callback)` is equivalent to the above.
+* `find('file', name, starting_directory, callback)` searches for file `name`
+starting from `start_directory` and calls `callback` with the results.
+* `find.file(name, starting_directory, callback)` is equivalent to the above.
 
 ## example
 
@@ -21,7 +22,7 @@ for a file instead of a directory
 var find = require('fs-find-root')
 
 // find a directory!
-find('.git', process.cwd(), function(err, found) {
+find.dir('.git', process.cwd(), function(err, found) {
   if (err) return err
   console.log('found the root of your git repo @ ' + found)
 })
