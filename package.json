@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/index.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/jarofghosts/fs-find-root/issues"
   },
-  "homepage": "https://github.com/jarofghosts/fs-find-root"
+  "homepage": "https://github.com/jarofghosts/fs-find-root",
+  "devDependencies": {
+    "tape": "^2.13.3"
+  }
 }

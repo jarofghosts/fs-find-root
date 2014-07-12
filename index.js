@@ -1,20 +1,20 @@
-var fs = require('fs'),
-    path = require('path')
+var path = require('path')
+  , fs = require('fs')
 
-function find(file_or_dir, to_find, dir, cb) {
+function find(fileOrDir, toFind, dir, cb) {
   var pieces = dir.split(path.sep)
 
   try_stat(pieces)
 
-  function try_stat(dir_pieces) {
-    if (!dir_pieces.length) return cb(null, null)
-    var check = dir_pieces.concat(to_find).join(path.sep)
+  function try_stat(dirPieces) {
+    if(!dirPieces.length) return cb(null, null)
+    var check = dirPieces.concat(toFind).join(path.sep)
 
-    fs.stat(check, interpret_result)
+    fs.stat(check, interpretResult)
 
-    function interpret_result(err, stats) {
-      if (err || !stats[file_or_dir === 'dir' ? 'isDirectory' : 'isFile']()) {
-        return try_stat(dir_pieces.slice(0, -1))
+    function interpretResult(err, stats) {
+      if(err || !stats[fileOrDir === 'dir' ? 'isDirectory' : 'isFile']()) {
+        return try_stat(dirPieces.slice(0, -1))
       }
 
       cb(null, check)
