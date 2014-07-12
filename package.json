@@ -1,6 +1,6 @@
 {
   "name": "fs-find-root",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "search up directories",
   "main": "index.js",
   "directories": {
