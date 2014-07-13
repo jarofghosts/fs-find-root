@@ -6,7 +6,6 @@ var find = require('../')
 
 var deepPath = path.join(__dirname, '1level', '2level', '3level')
 
-
 test('can find dir', function(t) {
   t.plan(2)
 

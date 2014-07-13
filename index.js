@@ -4,9 +4,9 @@ var path = require('path')
 function find(fileOrDir, toFind, dir, cb) {
   var pieces = dir.split(path.sep)
 
-  try_stat(pieces)
+  tryStat(pieces)
 
-  function try_stat(dirPieces) {
+  function tryStat(dirPieces) {
     if(!dirPieces.length) return cb(null, null)
     var check = dirPieces.concat(toFind).join(path.sep)
 
@@ -14,7 +14,7 @@ function find(fileOrDir, toFind, dir, cb) {
 
     function interpretResult(err, stats) {
       if(err || !stats[fileOrDir === 'dir' ? 'isDirectory' : 'isFile']()) {
-        return try_stat(dirPieces.slice(0, -1))
+        return tryStat(dirPieces.slice(0, -1))
       }
 
       cb(null, check)
