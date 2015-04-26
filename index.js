@@ -7,7 +7,10 @@ function find(fileOrDir, toFind, dir, cb) {
   tryStat(pieces)
 
   function tryStat(dirPieces) {
-    if(!dirPieces.length) return cb(null, null)
+    if(!dirPieces.length) {
+      return cb(null, null)
+    }
+
     var check = dirPieces.concat(toFind).join(path.sep)
 
     fs.stat(check, interpretResult)

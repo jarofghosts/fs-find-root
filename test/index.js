@@ -59,3 +59,14 @@ test('finds the nearest to current dir', function(t) {
     )
   }
 })
+
+test('returns null if not found', function(t) {
+  t.plan(2)
+
+  find('file', '--------', deepPath, reportsNull)
+
+  function reportsNull(err, result) {
+    t.ok(!err)
+    t.equal(result, null)
+  }
+})
