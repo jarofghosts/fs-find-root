@@ -1,8 +1,9 @@
-fs-find-root
-====
+# fs-find-root
 
-[![Build Status](http://img.shields.io/travis/jarofghosts/fs-find-root.svg?style=flat)](https://travis-ci.org/jarofghosts/fs-find-root)
-[![npm install](http://img.shields.io/npm/dm/fs-find-root.svg?style=flat)](https://www.npmjs.org/package/fs-find-root)
+[![Build Status](https://img.shields.io/travis/jarofghosts/fs-find-root.svg?style=flat-square)](https://travis-ci.org/jarofghosts/fs-find-root)
+[![npm install](https://img.shields.io/npm/dm/fs-find-root.svg?style=flat-square)](https://www.npmjs.org/package/fs-find-root)
+[![npm version](https://img.shields.io/npm/v/fs-find-root.svg?style=flat-square)](https://www.npmjs.org/package/fs-find-root)
+[![License](https://img.shields.io/npm/l/fs-find-root.svg?style=flat-square)](https://github.com/jarofghosts/fs-find-root/blob/master/LICENSE)
 
 search up directories until you find what you're looking for
 
@@ -24,13 +25,19 @@ var find = require('fs-find-root')
 
 // find a directory!
 find.dir('.git', process.cwd(), function(err, found) {
-  if(err) return err
+  if(err) {
+    return err
+  }
+
   console.log('found the root of your git repo @ ' + found)
 })
 
 // find a file!
 find.file('package.json', process.cwd(), function(err, found) {
-  if(err) return err
+  if(err) {
+    return err
+  }
+
   console.log('found yer package.json right here: ' + found)
 })
 ```
