@@ -3,6 +3,7 @@
 [![Build Status](https://img.shields.io/travis/jarofghosts/fs-find-root.svg?style=flat-square)](https://travis-ci.org/jarofghosts/fs-find-root)
 [![npm install](https://img.shields.io/npm/dm/fs-find-root.svg?style=flat-square)](https://www.npmjs.org/package/fs-find-root)
 [![npm version](https://img.shields.io/npm/v/fs-find-root.svg?style=flat-square)](https://www.npmjs.org/package/fs-find-root)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 [![License](https://img.shields.io/npm/l/fs-find-root.svg?style=flat-square)](https://github.com/jarofghosts/fs-find-root/blob/master/LICENSE)
 
 search up directories until you find what you're looking for
@@ -24,8 +25,8 @@ search up directories until you find what you're looking for
 var find = require('fs-find-root')
 
 // find a directory!
-find.dir('.git', process.cwd(), function(err, found) {
-  if(err) {
+find.dir('.git', process.cwd(), function (err, found) {
+  if (err) {
     return err
   }
 
@@ -33,8 +34,8 @@ find.dir('.git', process.cwd(), function(err, found) {
 })
 
 // find a file!
-find.file('package.json', process.cwd(), function(err, found) {
-  if(err) {
+find.file('package.json', process.cwd(), function (err, found) {
+  if (err) {
     return err
   }
 
