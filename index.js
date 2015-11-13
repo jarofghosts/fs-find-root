@@ -1,5 +1,9 @@
+'use strict'
+
 var path = require('path')
 var fs = require('fs')
+
+var Promise = require('es6-promise').Promise
 
 function find (fileOrDir, toFind, dir) {
   var pieces = dir.split(path.sep)
