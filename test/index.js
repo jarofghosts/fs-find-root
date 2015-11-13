@@ -7,66 +7,64 @@ var find = require('../')
 var deepPath = path.join(__dirname, '1level', '2level', '3level')
 
 test('can find dir', function (t) {
-  t.plan(2)
+  t.plan(1)
 
-  find.dir('.findlevel', deepPath, canFindDir)
-
-  function canFindDir (err, found) {
-    t.ok(!err)
-    t.strictEqual(found, path.join(__dirname, '1level', '.findlevel'))
-  }
+  find.dir('.findlevel', deepPath)
+    .then(function (found) {
+      t.strictEqual(found, path.join(__dirname, '1level', '.findlevel'))
+    })
+    .catch(t.fail)
 })
 
 test('knows type', function (t) {
-  t.plan(2)
-  find.file('.findlevel', deepPath, knowsType)
+  t.plan(1)
 
-  function knowsType (err, found) {
-    t.ok(!err)
-    t.ok(!found)
-  }
+  find.file('.findlevel', deepPath)
+    .then(function (found) {
+      t.equal(found, null)
+    })
+    .catch(t.fail)
 })
 
 test('can find file', function (t) {
-  t.plan(2)
-  find('file', 'index.js', deepPath, canFindFile)
+  t.plan(1)
 
-  function canFindFile (err, found) {
-    t.ok(!err)
-    t.strictEqual(found, path.join(__dirname, 'index.js'))
-  }
+  find('file', 'index.js', deepPath)
+    .then(function (found) {
+      t.strictEqual(found, path.join(__dirname, 'index.js'))
+    })
+    .catch(t.fail)
 })
 
 test('searches up more than once', function (t) {
-  t.plan(2)
-  find.file('package.json', deepPath, skysTheLimit)
+  t.plan(1)
 
-  function skysTheLimit (err, found) {
-    t.ok(!err)
-    t.strictEqual(found, path.resolve(__dirname, '..', 'package.json'))
-  }
+  find.file('package.json', deepPath)
+    .then(function (found) {
+      t.strictEqual(found, path.resolve(__dirname, '..', 'package.json'))
+    })
+    .catch(t.fail)
 })
 
 test('finds the nearest to current dir', function (t) {
-  t.plan(2)
-  find('dir', 'multi-level', deepPath, usesNearest)
+  t.plan(1)
 
-  function usesNearest (err, found) {
-    t.ok(!err)
-    t.strictEqual(
+  find('dir', 'multi-level', deepPath)
+    .then(function (found) {
+      t.strictEqual(
         found,
         path.join(__dirname, '1level', '2level', 'multi-level')
-    )
-  }
+      )
+    })
+    .catch(t.fail)
 })
 
 test('returns null if not found', function (t) {
-  t.plan(2)
+  t.plan(1)
 
-  find('file', '--------', deepPath, reportsNull)
-
-  function reportsNull (err, result) {
-    t.ok(!err)
-    t.equal(result, null)
-  }
+  find('file', '--------', deepPath)
+    .then(function (found) {
+      t.equal(found, null)
+    })
+    .catch(t.fail)
 })
