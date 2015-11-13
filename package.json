@@ -29,6 +29,9 @@
   "homepage": "https://github.com/jarofghosts/fs-find-root",
   "devDependencies": {
     "standard": "^5.3.1",
-    "tape": "^2.13.3"
+    "tape": "^4.2.2"
+  },
+  "dependencies": {
+    "es6-promise": "^3.0.2"
   }
 }

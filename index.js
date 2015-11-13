@@ -1,28 +1,30 @@
 var path = require('path')
 var fs = require('fs')
 
-function find (fileOrDir, toFind, dir, cb) {
+function find (fileOrDir, toFind, dir) {
   var pieces = dir.split(path.sep)
 
-  tryStat(pieces)
+  return new Promise(function (resolve, reject) {
+    tryStat(pieces)
 
-  function tryStat (dirPieces) {
-    if (!dirPieces.length) {
-      return cb(null, null)
-    }
-
-    var check = dirPieces.concat(toFind).join(path.sep)
-
-    fs.stat(check, interpretResult)
-
-    function interpretResult (err, stats) {
-      if (err || !stats[fileOrDir === 'dir' ? 'isDirectory' : 'isFile']()) {
-        return tryStat(dirPieces.slice(0, -1))
+    function tryStat (dirPieces) {
+      if (!dirPieces.length) {
+        return resolve(null)
       }
 
-      cb(null, check)
+      var check = dirPieces.concat(toFind).join(path.sep)
+
+      fs.stat(check, interpretResult)
+
+      function interpretResult (err, stats) {
+        if (err || !stats[fileOrDir === 'dir' ? 'isDirectory' : 'isFile']()) {
+          return tryStat(dirPieces.slice(0, -1))
+        }
+
+        resolve(check)
+      }
     }
-  }
+  })
 }
 
 find.dir = find.bind(null, 'dir')
